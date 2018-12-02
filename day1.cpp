@@ -2,7 +2,6 @@
 // Created by Patrick on 12/1/2018.
 //
 
-#include <iostream>
 #include <fstream>
 #include <numeric>
 #include <unordered_map>
@@ -13,9 +12,14 @@ std::vector<int> day1::get_inputs() {
     std::fstream in;
     in.open("../day1.txt");
 
-    for (std::string line; std::getline(in, line);)
-        if (line[0] == '-') output.push_back(std::stoi(line));
-        else output.push_back(std::stoi(line.substr(1)));
+    for (std::string line; std::getline(in, line);) {
+        if (line[0] == '-') {
+            output.push_back(std::stoi(line));
+        } else {
+            output.push_back(std::stoi(line.substr(1)));
+        }
+    }
+
     in.close();
     return output;
 }
