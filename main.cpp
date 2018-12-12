@@ -5,6 +5,9 @@
 #include <iostream>
 #include "day1.h"
 #include "day2.h"
+#include "day3.h"
+#include "day4.h"
+#include "day5.h"
 
 int main() {
 
@@ -24,4 +27,22 @@ int main() {
                   << std::endl;
     }
 
+    {
+        auto inputs = day3::get_inputs();
+        auto fabrics = day3::get_fabric_locations(inputs);
+        auto overlapping_fabrics = day3::find_overlapping_fabrics(fabrics);
+        auto non_overlapping_fabric = day3::find_non_overlapping_fabric(fabrics);
+
+        std::cout << "Day 3: \n" << "Overlapping Fabrics: " << overlapping_fabrics << "\n" << "Non-Overlapping Fiber: "
+                  << non_overlapping_fabric << "\n" << std::endl;
+    }
+
+    {
+        auto inputs = day5::get_inputs();
+        auto size = day5::get_size_of_polymer(inputs);
+        auto shortest = day5::find_size_of_shortest_polymer(inputs);
+        std::cout << "Day 5: \n" << "Size Of Polymers: " << size << "\n" << "Shortest Polymers: " << shortest << "\n"
+                  << std::endl;
+
+    }
 }
