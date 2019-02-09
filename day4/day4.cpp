@@ -13,6 +13,5 @@ std::vector<std::string> day4::get_inputs() {
     for (std::string line; std::getline(in, line);)
         inputs.push_back(line);
 
-    in.close();
     return inputs;
 }

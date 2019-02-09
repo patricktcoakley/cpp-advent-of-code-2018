@@ -48,12 +48,12 @@ int day2::checksum(const std::vector<std::string> &v) {
 std::string day2::find_common_letters(const std::vector<std::string> &v) {
 
     for (int line = 0; line != v.size(); ++line) {
-        int diff_chars = 0;
-        int common_char_pos = 0;
+        unsigned int diff_chars = 0;
+        unsigned int common_char_pos = 0;
         auto current_string = v[line];
         auto next_string = v[line + 1];
 
-        for (int current_char = 0; current_char != v[line].size(); ++current_char) {
+        for (unsigned int current_char = 0; current_char != v[line].size(); ++current_char) {
             if (current_string.at(current_char) != next_string.at(current_char)) {
                 ++diff_chars;
                 common_char_pos = current_char;

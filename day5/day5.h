@@ -18,4 +18,5 @@ namespace day5 {
 
     int find_size_of_shortest_polymer(std::string s);
 
+    void erase_chars_from_vector(const std::string &s, std::vector<int> &sizes, const char &c);
 }
