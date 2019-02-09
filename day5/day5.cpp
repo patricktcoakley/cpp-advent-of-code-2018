@@ -10,11 +10,9 @@
 std::string day5::get_inputs() {
     std::string inputs;
     std::fstream in;
-    in.open("../day5.txt");
+    in.open("../day5/day5.txt");
+	if (in.is_open()) while (std::getline(in, inputs));
 
-    while (std::getline(in, inputs));
-
-    in.close();
     return inputs;
 }
 
@@ -38,7 +36,9 @@ int day5::get_size_of_polymer(std::string s) {
 }
 
 int day5::find_size_of_shortest_polymer(std::string s) {
-    std::vector<char> chars_to_check{'a', 'b', 'c', 'd'};
+    std::vector<char> chars_to_check{'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n',
+                                     'o', 'p', 'q', 'r', 's', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'x'};
+
     std::vector<std::string> strings;
     auto min = s.size();
 

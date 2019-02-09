@@ -10,7 +10,7 @@
 std::vector<std::string> day2::get_inputs() {
     std::vector<std::string> inputs;
     std::fstream in;
-    in.open("../day2.txt");
+    in.open("../day2/day2.txt");
 
     for (std::string line; std::getline(in, line);)
         inputs.push_back(line);
@@ -29,9 +29,7 @@ int day2::checksum(const std::vector<std::string> &v) {
         bool has_double = false;
         bool has_triple = false;
 
-        for (const char &c: line) {
-            frequency[c] += 1;
-        }
+        for (const char &c: line) frequency[c] += 1;
 
         for (const char &c: line) {
             if (frequency[c] == 2 && !has_double) {
@@ -61,9 +59,7 @@ std::string day2::find_common_letters(const std::vector<std::string> &v) {
                 common_char_pos = current_char;
             }
         }
-        if (diff_chars == 1) {
-            return current_string.erase(common_char_pos, 1);
-        }
+        if (diff_chars == 1) return current_string.erase(common_char_pos, 1);
     }
     return "No similar strings found.";
 }
