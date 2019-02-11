@@ -12,11 +12,10 @@
 
 namespace day5 {
 
-    std::string get_inputs();
+    std::vector<char> const get_inputs();
 
-    int get_size_of_polymer(std::string s);
+    int get_size_of_polymer(const std::vector<char> &v);
 
-    int find_size_of_shortest_polymer(std::string s);
+    int find_size_of_shortest_polymer(const std::vector<char> &polymers);
 
-    void erase_chars_from_vector(const std::string &s, std::vector<int> &sizes, const char &c);
 }

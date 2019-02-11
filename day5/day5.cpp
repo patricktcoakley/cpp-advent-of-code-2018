@@ -5,55 +5,51 @@
 #include <fstream>
 #include <iostream>
 #include <algorithm>
+#include <iterator>
 #include "day5.h"
 
-std::string day5::get_inputs() {
-    std::string inputs;
+std::vector<char> const day5::get_inputs() {
     std::fstream in;
     in.open("../day5/day5.txt");
 
-    while (std::getline(in, inputs));
+    std::vector<char> inputs{std::istreambuf_iterator<char>(in), std::istreambuf_iterator<char>()};
 
     return inputs;
 }
 
-int day5::get_size_of_polymer(std::string s) {
-    bool done = false;
+int day5::get_size_of_polymer(const std::vector<char> &v) {
+    std::vector<char> copy{v};
 
-    while (!done) {
-        for (unsigned int next_char_index = 1; next_char_index != s.size(); ++next_char_index) {
-            unsigned int current_char_index = next_char_index - 1;
-            bool is_triggered = (s[current_char_index] ^ s[next_char_index]) == 32;
+    while (true) {
+        bool is_triggered = false;
+        for (auto curr_char = copy.begin() + 1; curr_char != copy.end();) {
+            auto prev_char = curr_char - 1;
 
-            if (is_triggered) {
-                s.erase(current_char_index, 2);
-                next_char_index = 0;
+            if ((*curr_char ^ *prev_char) == 32) {
+                is_triggered = true;
+                curr_char = copy.erase(prev_char, curr_char + 1);
+            } else {
+                ++curr_char;
             }
         }
 
-        done = true;
+        if (!is_triggered) return static_cast<int>(copy.size());
     }
-    return static_cast<int>(s.length());
 }
 
 
-void day5::erase_chars_from_vector(const std::string &s, std::vector<int> &sizes, const char &c) {
-    auto temp_string = s;
-    temp_string.erase(remove(temp_string.begin(), temp_string.end(), c), temp_string.end());
-    temp_string.erase(remove(temp_string.begin(), temp_string.end(), (c & ~32)), temp_string.end());
-
-    auto size = get_size_of_polymer(temp_string);
-    sizes.push_back(size);
-}
-
-
-int day5::find_size_of_shortest_polymer(std::string s) {
+int day5::find_size_of_shortest_polymer(const std::vector<char> &polymers) {
     const std::vector<char> chars_to_check{'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n',
-                                     'o', 'p', 'q', 'r', 's', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'x'};
+                                           'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
 
-    std::vector<int> sizes;
+    auto min = polymers.size();
+    for (const auto &char_to_check: chars_to_check) {
+        auto copy{polymers};
+        copy.erase(std::remove(copy.begin(), copy.end(), char_to_check), copy.end());
+        copy.erase(std::remove(copy.begin(), copy.end(), toupper(char_to_check)), copy.end());
+        const auto size = get_size_of_polymer(copy);
+        if (size < min) min = size;
+    }
 
-    for (const auto &c: chars_to_check) erase_chars_from_vector(s, sizes, c);
-
-    return *std::min_element(sizes.begin(), sizes.end());
+    return min;
 }
