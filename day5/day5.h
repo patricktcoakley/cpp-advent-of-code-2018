@@ -2,7 +2,6 @@
 // Created by Patrick on 12/5/2018.
 //
 
-#include <string>
 #include <vector>
 
 #ifndef AOC2018_DAY5_H

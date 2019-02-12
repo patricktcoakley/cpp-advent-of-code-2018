@@ -7,7 +7,6 @@
 
 #endif //AOC2018_DAY3_H
 
-#include <iostream>
 #include <vector>
 #include <string>
 

@@ -3,10 +3,7 @@
 //
 
 #include <fstream>
-#include <iostream>
 #include <algorithm>
-#include <iterator>
-#include <thread>
 #include <stack>
 #include "day5.h"
 

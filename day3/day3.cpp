@@ -3,7 +3,6 @@
 //
 
 #include <fstream>
-#include <regex>
 #include "day3.h"
 
 std::vector<std::string> day3::get_inputs() {
