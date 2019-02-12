@@ -6,6 +6,8 @@
 #include <iostream>
 #include <algorithm>
 #include <iterator>
+#include <thread>
+#include <stack>
 #include "day5.h"
 
 std::vector<char> const day5::get_inputs() {
@@ -17,38 +19,34 @@ std::vector<char> const day5::get_inputs() {
     return inputs;
 }
 
-int day5::get_size_of_polymer(const std::vector<char> &v) {
-    std::vector<char> copy{v};
+int day5::get_size_of_polymer(const std::vector<char> &polymers) {
+    std::stack<char> polymer_stack;
 
-    while (true) {
-        bool is_triggered = false;
-        for (auto curr_char = copy.begin() + 1; curr_char != copy.end();) {
-            auto prev_char = curr_char - 1;
-
-            if ((*curr_char ^ *prev_char) == 32) {
-                is_triggered = true;
-                curr_char = copy.erase(prev_char, curr_char + 1);
-            } else {
-                ++curr_char;
-            }
+    for (char polymer : polymers) {
+        if (polymer_stack.empty()) {
+            polymer_stack.push(polymer);
+        } else if ((polymer ^ polymer_stack.top()) == 32) {
+            polymer_stack.pop();
+        } else {
+            polymer_stack.push(polymer);
         }
-
-        if (!is_triggered) return static_cast<int>(copy.size());
     }
+    return static_cast<int>(polymer_stack.size());
 }
 
 
 int day5::find_size_of_shortest_polymer(const std::vector<char> &polymers) {
+
     const std::vector<char> chars_to_check{'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n',
                                            'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
 
-    auto min = polymers.size();
+    int min = static_cast<int>(polymers.size());
+
     for (const auto &char_to_check: chars_to_check) {
+        const auto clean_polymers = [char_to_check](auto c) { return c == char_to_check || c == toupper(char_to_check); };
         auto copy{polymers};
-        copy.erase(std::remove(copy.begin(), copy.end(), char_to_check), copy.end());
-        copy.erase(std::remove(copy.begin(), copy.end(), toupper(char_to_check)), copy.end());
-        const auto size = get_size_of_polymer(copy);
-        if (size < min) min = size;
+        copy.erase(std::remove_if(copy.begin(), copy.end(), clean_polymers), copy.end());
+        min = std::min(min, get_size_of_polymer(copy));
     }
 
     return min;

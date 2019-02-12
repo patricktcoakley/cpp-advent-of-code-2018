@@ -14,7 +14,7 @@ namespace day5 {
 
     std::vector<char> const get_inputs();
 
-    int get_size_of_polymer(const std::vector<char> &v);
+    int get_size_of_polymer(const std::vector<char> &polymers);
 
     int find_size_of_shortest_polymer(const std::vector<char> &polymers);
 

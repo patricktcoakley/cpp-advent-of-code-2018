@@ -3,6 +3,8 @@
 //
 
 #include <iostream>
+#include <thread>
+#include <future>
 #include "../day1/day1.h"
 #include "../day2/day2.h"
 #include "../day3/day3.h"
@@ -38,8 +40,8 @@ void solve_day_3() {
 
 void solve_day_5() {
     const auto inputs = day5::get_inputs();
-    const auto size = day5::get_size_of_polymer(inputs);
     const auto shortest = day5::find_size_of_shortest_polymer(inputs);
+    const auto size = day5::get_size_of_polymer(inputs);
     std::cout << "Day 5: \n" << "Size Of Polymers: " << size << "\n" << "Shortest Polymers: " << shortest << "\n"
               << std::endl;
 }
