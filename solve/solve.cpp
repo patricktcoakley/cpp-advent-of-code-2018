@@ -36,10 +36,16 @@ void solve_day_3() {
               << non_overlapping_fabric << "\n" << std::endl;
 }
 
+void solve_day_4() {
+    const auto inputs = day4::get_inputs();
+    day4::find_guard_who_slept_most(inputs);
+}
+
 void solve_day_5() {
     const auto inputs = day5::get_inputs();
-    const auto shortest = day5::find_size_of_shortest_polymer(inputs);
     const auto size = day5::get_size_of_polymer(inputs);
+    const auto shortest = day5::find_size_of_shortest_polymer(inputs);
+
     std::cout << "Day 5: \n" << "Size Of Polymers: " << size << "\n" << "Shortest Polymers: " << shortest << "\n"
               << std::endl;
 }

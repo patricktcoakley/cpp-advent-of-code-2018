@@ -13,11 +13,13 @@ int main() {
     std::thread day1(solve_day_1);
     std::thread day2(solve_day_2);
     std::thread day3(solve_day_3);
+    std::thread day4(solve_day_4);
     std::thread day5(solve_day_5);
 
     day1.join();
     day2.join();
     day3.join();
+    day4.join();
     day5.join();
 
     auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(

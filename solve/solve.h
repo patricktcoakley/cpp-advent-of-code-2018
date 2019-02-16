@@ -7,10 +7,9 @@
 
 #endif //AOC2018_SOLVE_H
 
-
-
 void solve_day_1();
 void solve_day_2();
 void solve_day_3();
+void solve_day_4();
 void solve_day_5();
 
