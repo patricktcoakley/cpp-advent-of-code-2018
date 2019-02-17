@@ -10,7 +10,7 @@
 std::vector<int> day1::get_inputs() {
     std::vector<int> output;
     std::fstream in;
-    in.open("../day1/day1.txt");
+    in.open("inputs/day1.txt");
 
     for (std::string line; std::getline(in, line);) {
         if (line[0] == '-') {

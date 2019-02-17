@@ -9,7 +9,7 @@
 
 std::vector<char> const day5::get_inputs() {
     std::fstream in;
-    in.open("../day5/day5.txt");
+    in.open("inputs/day5.txt");
 
     std::vector<char> inputs{std::istreambuf_iterator<char>(in), std::istreambuf_iterator<char>()};
 

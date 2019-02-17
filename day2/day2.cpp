@@ -10,7 +10,7 @@
 std::vector<std::string> day2::get_inputs() {
     std::vector<std::string> inputs;
     std::fstream in;
-    in.open("../day2/day2.txt");
+    in.open("inputs/day2.txt");
 
     for (std::string line; std::getline(in, line);)
         inputs.push_back(line);
