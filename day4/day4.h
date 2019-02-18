@@ -12,8 +12,8 @@
 
 namespace day4 {
 
-
     std::set<std::string> get_inputs();
 
-    int find_guard_who_slept_most(const std::set<std::string> &v);
+    int find_guard_who_slept_most(const std::set<std::string> &reports);
+
 }

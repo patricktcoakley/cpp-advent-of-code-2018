@@ -38,7 +38,9 @@ void solve_day_3() {
 
 void solve_day_4() {
     const auto inputs = day4::get_inputs();
-    day4::find_guard_who_slept_most(inputs);
+    const auto most_slept_times_id =  day4::find_guard_who_slept_most(inputs);
+
+    std::cout << "Day 4: \n" << "The Most Slept Guard Times Their Most Slept Time: " << most_slept_times_id << "\n" << std::endl;
 }
 
 void solve_day_5() {
