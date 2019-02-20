@@ -47,7 +47,7 @@ int day2::checksum(const std::vector<std::string> &v) {
 
 std::string day2::find_common_letters(const std::vector<std::string> &v) {
 
-    for (int line = 0; line != v.size(); ++line) {
+    for (std::size_t line = 0; line != v.size(); ++line) {
         unsigned int diff_chars = 0;
         unsigned int common_char_pos = 0;
         auto current_string = v[line];
