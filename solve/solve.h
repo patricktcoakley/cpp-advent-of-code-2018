@@ -12,4 +12,5 @@ void solve_day_2();
 void solve_day_3();
 void solve_day_4();
 void solve_day_5();
+void solve_day_6();
 

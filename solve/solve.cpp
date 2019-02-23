@@ -8,6 +8,9 @@
 #include "../day3/day3.h"
 #include "../day4/day4.h"
 #include "../day5/day5.h"
+#include "solve.h"
+#include "../day6/day6.h"
+
 
 void solve_day_1() {
     const auto inputs = day1::get_inputs();
@@ -52,4 +55,9 @@ void solve_day_5() {
 
     std::cout << "Day 5: \n" << "Size Of Polymers: " << size << "\n" << "Shortest Polymers: " << shortest << "\n"
               << std::endl;
+}
+
+void solve_day_6() {
+    const auto inputs = day6::get_inputs();
+
 }
