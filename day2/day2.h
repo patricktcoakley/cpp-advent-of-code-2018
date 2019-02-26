@@ -12,10 +12,10 @@
 
 namespace day2 {
 
-    std::vector<std::string> get_inputs();
+    const std::vector<std::string> get_inputs();
 
-    int checksum(const std::vector<std::string> &v);
+    int checksum(const std::vector<std::string> &box_ids);
 
-    std::string find_common_letters(const std::vector<std::string> &v);
+    const std::string find_common_letters(const std::vector<std::string> &box_ids);
 }
 

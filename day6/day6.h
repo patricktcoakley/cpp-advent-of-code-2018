@@ -3,6 +3,7 @@
 //
 
 #include <vector>
+#include <set>
 
 #ifndef AOC2018_DAY6_H
 #define AOC2018_DAY6_H
@@ -11,5 +12,6 @@
 
 namespace day6 {
 
-    const std::vector<std::pair<int, int>> get_inputs();
+    const std::set<std::pair<int, int>> get_inputs();
+    int find_largest_area(const std::set<std::pair<int, int>> &pairs);
 }

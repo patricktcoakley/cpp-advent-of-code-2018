@@ -59,5 +59,8 @@ void solve_day_5() {
 
 void solve_day_6() {
     const auto inputs = day6::get_inputs();
+    const auto largest = day6::find_largest_area(inputs);
 
+    std::cout << "Day 6: \n" << "Largest area: " << largest << "\n"  << "\n"
+              << std::endl;
 }

@@ -11,10 +11,10 @@
 #include <vector>
 
 namespace day1 {
-    std::vector<int> get_inputs();
+    const std::vector<int> get_inputs();
 
-    int sum_of_frequencies(const std::vector<int> &v);
+    int sum_of_frequencies(const std::vector<int> &frequencies);
 
-    int get_first_duplicate_frequency(const std::vector<int> &v);
+    int get_first_duplicate_frequency(const std::vector<int> &frequencies);
 }
 

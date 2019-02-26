@@ -7,7 +7,7 @@
 #include <unordered_map>
 #include "day2.h"
 
-std::vector<std::string> day2::get_inputs() {
+const std::vector<std::string> day2::get_inputs() {
     std::vector<std::string> inputs;
     std::fstream in;
     in.open("inputs/day2.txt");
@@ -20,11 +20,11 @@ std::vector<std::string> day2::get_inputs() {
     return inputs;
 }
 
-int day2::checksum(const std::vector<std::string> &v) {
+int day2::checksum(const std::vector<std::string> &box_ids) {
     int doubles = 0;
     int triples = 0;
 
-    for (const auto &line: v) {
+    for (const auto &line: box_ids) {
         std::unordered_map<char, int> frequency;
         bool has_double = false;
         bool has_triple = false;
@@ -45,15 +45,15 @@ int day2::checksum(const std::vector<std::string> &v) {
     return doubles * triples;
 }
 
-std::string day2::find_common_letters(const std::vector<std::string> &v) {
+const std::string day2::find_common_letters(const std::vector<std::string> &box_ids) {
 
-    for (std::size_t line = 0; line != v.size(); ++line) {
+    for (std::size_t line = 0; line != box_ids.size(); ++line) {
         unsigned int diff_chars = 0;
         unsigned int common_char_pos = 0;
-        auto current_string = v[line];
-        auto next_string = v[line + 1];
+        auto current_string = box_ids[line];
+        auto next_string = box_ids[line + 1];
 
-        for (unsigned int current_char = 0; current_char != v[line].size(); ++current_char) {
+        for (unsigned int current_char = 0; current_char != box_ids[line].size(); ++current_char) {
             if (current_string.at(current_char) != next_string.at(current_char)) {
                 ++diff_chars;
                 common_char_pos = current_char;

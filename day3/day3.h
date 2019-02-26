@@ -12,13 +12,13 @@
 
 namespace day3 {
 
-    std::vector<std::string> get_inputs();
+    const std::vector<std::string> get_inputs();
 
     struct fabric { int id, x, y, width, height; };
 
-    std::vector<fabric> get_fabric_locations(const std::vector<std::string> &v);
+    const std::vector<fabric> get_fabric_locations(const std::vector<std::string> &fabric_locations);
 
-    int find_overlapping_fabrics(const std::vector<fabric> &v);
+    int find_overlapping_fabrics(const std::vector<fabric> &fabrics);
 
-    int find_non_overlapping_fabric(const std::vector<fabric> &v);
+    int find_non_overlapping_fabric(const std::vector<fabric> &fabrics);
 }
