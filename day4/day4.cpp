@@ -5,6 +5,7 @@
 #include <fstream>
 #include <unordered_map>
 #include <iostream>
+#include <iomanip>
 #include "day4.h"
 
 std::set<std::string> day4::get_inputs() {
@@ -48,8 +49,7 @@ std::time_t day4::get_date_time(const std::string &s, const std::regex &date_reg
     std::tm date{};
     std::smatch matches;
     std::regex_search(s, matches, date_regex);
-    const auto format = "[%Y-%m-%d %H:%M]";
-    strptime(matches[0].str().c_str(), format, &date);
+    std::istringstream {matches[0]} >> std::get_time(&date, "[%Y-%m-%d %H:%M]");
     date.tm_year += 500; // year is pre-epoch UNIX time and therefore should be increased equally
     return mktime(&date);
 }
@@ -58,8 +58,7 @@ int day4::get_minute(const std::string &s, const std::regex &date_regex) {
     std::tm date{};
     std::smatch matches;
     std::regex_search(s, matches, date_regex);
-    const auto format = "[%Y-%m-%d %H:%M]";
-    strptime(matches[0].str().c_str(), format, &date);
+    std::istringstream {matches[0]} >> std::get_time(&date, "[%Y-%m-%d %H:%M]");
     return date.tm_min;
 }
 
