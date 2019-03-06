@@ -12,13 +12,8 @@ const std::vector<int> day1::get_inputs() {
     std::fstream in;
     in.open("inputs/day1.txt");
 
-    for (std::string line; std::getline(in, line);) {
-        if (line[0] == '-') {
-            output.push_back(std::stoi(line));
-        } else {
-            output.push_back(std::stoi(line.substr(1)));
-        }
-    }
+    for (std::string line; std::getline(in, line);)
+        output.push_back(std::stoi(line));
 
     return output;
 }
