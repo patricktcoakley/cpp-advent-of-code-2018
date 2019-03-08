@@ -28,8 +28,11 @@ int day1::get_first_duplicate_frequency(const std::vector<int> &frequencies) {
     for (;;) {
         for (const auto &frequency: frequencies) {
             current_total += frequency;
-            frequency_map[current_total] += 1;
-            if (frequency_map[current_total] == 2) return current_total;
+            if (frequency_map[current_total] == 1) {
+                return current_total;
+            } else {
+                frequency_map[current_total] = 1;
+            }
         }
     }
 }

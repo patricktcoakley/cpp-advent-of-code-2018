@@ -34,5 +34,5 @@ namespace day4 {
 
     int get_minute(const std::string &s, const std::regex &date_regex);
 
-    int find_most_frequently_asleep_guard(std::set<std::string> reports);
+    int find_most_frequently_asleep_guard(const std::set<std::string> &reports);
 }

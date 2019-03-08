@@ -111,7 +111,7 @@ int day4::find_guard_with_most_minutes_asleep(const std::set<std::string> &repor
     return std::stoi(guard_with_most_sleep.substr(1)) * most_slept_time;
 }
 
-int day4::find_most_frequently_asleep_guard(const std::set<std::string> reports) {
+int day4::find_most_frequently_asleep_guard(const std::set<std::string> &reports) {
     std::unordered_map<std::string, std::unordered_map<int, int>> map;
 
     const std::regex guard_awake_regex{R"((\bwakes\b))"};
@@ -122,6 +122,7 @@ int day4::find_most_frequently_asleep_guard(const std::set<std::string> reports)
 
     std::string current_guard_id;
     int current_minute = 0;
+
     for (const auto &line : reports) {
         if (is_beginning_shift(line, guard_begins_regex)) {
             current_guard_id = get_id(line, guard_id_regex);
@@ -130,7 +131,7 @@ int day4::find_most_frequently_asleep_guard(const std::set<std::string> reports)
             ++map[current_guard_id][current_minute];
         } else if (is_awake(line, guard_awake_regex)) {
             auto time_slept = (get_minute(line, date_regex) - 1) - current_minute;
-            for (auto i = 0; i != time_slept; ++i) {
+            for (auto minutes_asleep = 0; minutes_asleep != time_slept; ++minutes_asleep) {
                 ++map[current_guard_id][++current_minute];
             }
         }

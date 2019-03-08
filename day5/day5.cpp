@@ -19,10 +19,10 @@ std::vector<char> const day5::get_inputs() {
 std::size_t day5::get_size_of_polymer(const std::vector<char> &polymers) {
     std::stack<char> polymer_stack;
 
-    for (char polymer : polymers) {
+    for (const auto &polymer : polymers) {
         if (polymer_stack.empty()) {
             polymer_stack.push(polymer);
-        } else if ((polymer ^ polymer_stack.top()) == 32) {
+        } else if ((static_cast<unsigned>(polymer) ^ static_cast<unsigned>(polymer_stack.top())) == 32) {
             polymer_stack.pop();
         } else {
             polymer_stack.push(polymer);
@@ -40,9 +40,9 @@ std::size_t day5::find_size_of_shortest_polymer(const std::vector<char> &polymer
     std::size_t min = polymers.size();
 
     for (const auto &char_to_check: chars_to_check) {
-        const auto clean_polymers = [char_to_check](auto c) { return c == char_to_check || c == toupper(char_to_check); };
+        const auto is_char_to_check = [&char_to_check](auto c) { return c == char_to_check || c == toupper(char_to_check); };
         auto copy = std::vector<char>{polymers};
-        copy.erase(std::remove_if(copy.begin(), copy.end(), clean_polymers), copy.end());
+        copy.erase(std::remove_if(copy.begin(), copy.end(), is_char_to_check), copy.end());
         min = std::min(min, get_size_of_polymer(copy));
     }
 
